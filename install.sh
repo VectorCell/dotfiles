@@ -11,5 +11,5 @@ for file in $(ls); do
 	cp "$file" "$HOME/.$file"
 done
 
-cd
-source .profile
+echo "changes will not occur until the following command is run, or bash is restarted"
+echo "source ~/.profile"

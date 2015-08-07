@@ -137,4 +137,4 @@ RESET="\[\e[m\]"
 BRANCH=$CYAN
 PS1="$GREEN\u@\h $BLUE\w $BRANCH\$(git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' | xargs -0 printf '(%s)')$BLUE\$ $RESET"
 
-tmux ls &> /dev/null || tmux
+#tmux ls &> /dev/null || tmux
