@@ -127,6 +127,11 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+git-branch() {
+    BRANCH=$(git branch 2> /dev/null | grep '^*' | colrm 1 2)
+    echo "$BRANCH " | xargs -0 printf '%s'
+}
+
 #PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;34m\]\$\[\e[m\] '
 # sets bash prompt
 GREEN="\[\e[1;32m\]"
@@ -135,6 +140,6 @@ YELLOW="\[\e[1;33m\]"
 CYAN="\[\e[1;36m\]"
 RESET="\[\e[m\]"
 BRANCH=$CYAN
-PS1="$GREEN\u@\h $BLUE\w $BRANCH\$(git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' | xargs -0 printf '%s')$BLUE\$ $RESET"
+PS1="$GREEN\u@\h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
 
 #tmux ls &> /dev/null || tmux
