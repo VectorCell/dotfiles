@@ -140,6 +140,6 @@ YELLOW="\[\e[1;33m\]"
 CYAN="\[\e[1;36m\]"
 RESET="\[\e[m\]"
 BRANCH=$CYAN
-PS1="$GREEN\u$RESET@$GREEN\\h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
+PS1="$GREEN\u@\h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
 
 #tmux ls &> /dev/null || tmux
