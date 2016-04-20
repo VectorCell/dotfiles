@@ -125,6 +125,14 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+#sets PATH to include CUDA
+if [ -d /usr/local/cuda-7.5 ]; then
+	export CUDA_HOME=/usr/local/cuda-7.5
+	export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
+	PATH=${CUDA_HOME}/bin:${PATH}
+	export PATH
+fi
+
 git-branch() {
     BRANCH=$(git branch 2> /dev/null | grep '^*' | colrm 1 2)
     if [ -n "$BRANCH" ]; then
