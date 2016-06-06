@@ -152,8 +152,13 @@ PS1="$GREEN\u \h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
 
 if [ -z "$TMUX" ]; then
     if [ -z "$(tmux ls | grep attached)" ]; then
-        tmux a && exit
-    elif [ -n "$(tmux ls | grep server)" ]; then
-        tmux && exit
+        # there is no currently attached tmux session
+        if [ -z "$(tmux ls | grep server)" ]; then
+            # there is no tmux session at all, start new one
+            tmux && exit
+        else
+            # attach to currently unattached session
+            tmux a && exit
+        fi
     fi
 fi
