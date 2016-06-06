@@ -150,4 +150,10 @@ RESET="\[\e[m\]"
 BRANCH=$CYAN
 PS1="$GREEN\u \h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
 
-#tmux ls &> /dev/null || tmux
+if [ -z "$TMUX" ]; then
+    if [ -z "$(tmux ls | grep attached)" ]; then
+        tmux a && exit
+    elif [ -z "$(tmux ls)" ]; then
+        tmux && exit
+    fi
+fi
