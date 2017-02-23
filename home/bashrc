@@ -153,6 +153,11 @@ RESET="\[\e[m\]"
 BRANCH=$CYAN
 PS1="$GREEN\u \h $BLUE\w $BRANCH\$(git-branch)$BLUE\$ $RESET"
 
+# if running xterm
+if [ "$TERM" == "xterm" ]; then
+	export TERM=xterm-256color
+fi
+
 
 #if [ -z "$TMUX" ]; then
 #	if [ -z "$(tmux ls | grep attached)" ]; then
